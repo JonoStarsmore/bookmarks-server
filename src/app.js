@@ -23,7 +23,7 @@ app.use(cors())
 app.use(bookmarksRouter)
 
 app.get('/', (req, res) => {
-  res.send(Hello World)
+  res.send('Hello World')
 })
 
 app.use(errorHandler)

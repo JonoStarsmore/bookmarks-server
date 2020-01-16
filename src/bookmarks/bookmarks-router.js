@@ -4,10 +4,10 @@ const logger = require('../logger')
 const store =  require('../store')
 
 const bookmarksRouter = express.Router();
-const bodyParser =  express.join();
+const bodyParser =  express.json();
 
 bookmarksRouter
-    .route('./bookmarks')
+    .route('/bookmarks')
     .get((req,res) => {
         res.json(store.bookmarks)
     })
@@ -44,9 +44,9 @@ bookmarksRouter
 
         if(!bookmark){
             logger.error(`Bookmark with id ${bookmark_id} not found`)
-            return
+            return res
             .status(404)
-            .res('Bookmark not found')
+            .send('Bookmark not found')
         }
 
         res.json(bookmark)
@@ -70,6 +70,5 @@ bookmarksRouter
       .status(204)
       .end()
   })
-    })
 
 module.exports =  bookmarksRouter
